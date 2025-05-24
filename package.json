@@ -4,7 +4,10 @@
   "description": "This repository contains scripts and configuration to fix and deploy the Netflix clone project to Netlify.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build",
+    "dev": "vite",
+    "serve": "vite preview"
   },
   "keywords": [],
   "author": "",
