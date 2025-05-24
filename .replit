@@ -1,0 +1,39 @@
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Netflix-Fix-And-Deploy"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "deploy_script_execution"
+
+[[workflows.workflow]]
+name = "Netflix-Fix-And-Deploy"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "chmod +x fix-and-deploy.sh && ./fix-and-deploy.sh"
+
+[[workflows.workflow]]
+name = "deploy_script_execution"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "chmod +x fix-and-deploy.sh && ./fix-and-deploy.sh"
+
+[deployment]
+run = ["sh", "-c", "chmod +x fix-and-deploy.sh && ./fix-and-deploy.sh"]
